@@ -8,7 +8,7 @@ import TabDiv from "../../components/TabDiv";
 export default function LoginOrRegister() {
   const { navOpen, setNavOpen } = useContext(UserAndNavContext);
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900">
+    <div className="flex flex-col min-h-screen bg-cG-999">
       <Head>
         {/* <link rel="icon" href="/favicon.ico" /> */}
         <meta name="description" content="Login or Register" />

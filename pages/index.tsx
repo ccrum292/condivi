@@ -11,14 +11,14 @@ export default function IndexPage(props) {
   const { navOpen, setNavOpen, user, setUser, authToken, setAuthToken } = useContext(UserAndNavContext);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900">
+    <div className="flex flex-col min-h-screen bg-cG-999">
       <Head>
         {/* <link rel="icon" href="/favicon.ico" /> */}
         <meta
           name="description"
           content="Next.js and Tailwind eCommerce Store"
         />
-        <title>Caleb Crum Starter Code</title>
+        <title>Condivi Home Page</title>
       </Head>
       <Nav />
       <div className="flex-grow lg:flex">

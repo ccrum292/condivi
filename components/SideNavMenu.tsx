@@ -22,7 +22,7 @@ export default function SideNavMenu(props) {
   }
 
   return (
-    <div className="h-full hidden flex flex-col bg-gray-700 pt-1 pb-12 sm:py-2 lg:block">
+    <div className="h-full hidden flex flex-col bg-cG-999 pt-1 pb-12 border-r border-cO-999 border-opacity-50 sm:py-2 lg:block">
       <NavItem
         handleOnClick={handleOnClick}
         href="/"

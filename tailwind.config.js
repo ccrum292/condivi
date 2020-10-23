@@ -3,7 +3,8 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        '2xl': '1920px'
+        '2xl': '1920px',
+        'light-mode': { raw: '(prefers-color-scheme: light)'}
       },
       spacing:{
         '120':'30rem',
@@ -17,6 +18,23 @@ module.exports = {
       },
       opacity:{
         '90':'.9'
+      },
+      colors: {
+        cB: {
+          600: '#D94422',
+          700: '#6A1B1B',
+          800: '#461412'
+        },
+        cO: {
+          555: '#fdf6e3',
+          777: '#FFD476',
+          888: '#ffd476',
+          900: '#D2A454',
+          999: '#cb9356'
+        },
+        cG: {
+          999: '#1A1D21'
+        }
       }
     },
   },

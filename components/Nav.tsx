@@ -30,7 +30,7 @@ export default function Nav() {
 
   return (
     <>
-      <div className="flex items-center justify-between bg-gray-800">
+      <div className="flex items-center justify-between bg-cB-800">
         <div
           className="px-2 my-1 sm:my-0 cursor-pointer sm:transition duration-300 ease-in-out sm:transform hover:scale-125"
           onClick={() => {
@@ -38,22 +38,22 @@ export default function Nav() {
           }}
         >
           <FontAwesomeIcon
-            style={{ color: "#e2e8f0" }}
+            style={{ color: "#cb9356" }}
             size="2x"
             icon={faBars}
           />
         </div>
         <div className=" no-select px-2 mx-2 flex justify-center cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
           <Link href="/">
-            <a className="jost self-center text-center text-xl font-bold text-gray-300 sm:text-3xl">
+            <a className="jost self-center text-center text-xl font-bold text-cO-900 sm:text-3xl">
               Condivi
             </a>
           </Link>
         </div>
         {authToken ?
           <div className="no-select mx-2 relative">
-            <button onClick={() => setUserDropdownDiv(!userDropdownDiv)} className="no-select focus:outline-none jost self-center flex items-center justify-center text-center font-bold text-gray-300 sm:text-xl cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
-              <Gravatar className="no-select rounded-full inline mr-1" email={user.email} size={30} /> {user.email}
+            <button onClick={() => setUserDropdownDiv(!userDropdownDiv)} className="no-select focus:outline-none jost self-center flex items-center justify-center text-center font-bold text-cO-999 sm:text-xl cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
+              <Gravatar default="mp" className="no-select rounded-full inline mr-2" email={user.email} size={30} /> {user.email.split("@")[0]}
             </button>
             {userDropdownDiv ?
               <div className="origin-top-right absolute right-0 mt-2 text-white">
@@ -68,7 +68,7 @@ export default function Nav() {
           </div> :
           <div className="no-select flex justify-center sm:px-2 mx-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
             <Link href="/loginOrRegister">
-              <a className="jost self-center text-center font-bold sm:text-xl text-gray-300">
+              <a className="jost self-center text-center font-bold sm:text-xl text-cO-999">
               Login or Register
             </a>
           </Link>
@@ -76,7 +76,7 @@ export default function Nav() {
         }
       </div>
       {navOpen ? (
-        <div className="flex flex-col bg-gray-700 rounded-b-full pt-1 pb-12 sm:rounded-b-lg sm:py-2 lg:hidden">
+        <div className="flex flex-col rounded-b-full border-b-4 border-cO-999 pt-1 pb-12 sm:rounded-b-lg sm:py-2 lg:hidden">
           <NavItem
             handleOnClick={handleOnClick}
             href="/"
