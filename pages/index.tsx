@@ -6,8 +6,21 @@ import UserAndNavContext from "../context/userAndNavContext";
 import { GetStaticProps } from "next";
 import { server } from "../lib/config";
 
+export const getStaticProps: GetStaticProps = async () => {
 
-export default function IndexPage(props) {
+  const res = await fetch(`${server}/api/scrape/instagram`)
+  const data = await res.json()
+
+  return {
+    props: {
+      data
+    }
+  }
+
+}
+
+
+export default function IndexPage({ data }) {
   const { navOpen, setNavOpen, user, setUser, authToken, setAuthToken } = useContext(UserAndNavContext);
 
   return (
@@ -27,7 +40,7 @@ export default function IndexPage(props) {
             <SideNavMenu />
           </div>
         )}
-        <div className="text-white"></div>
+        <div className="text-white">{JSON.stringify(data)}</div>
       </div>
     </div>
   );
