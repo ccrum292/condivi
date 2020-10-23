@@ -1,6 +1,6 @@
-# starter_code_nextjs_tailwindcss_faunadb
+# Condivi
 
-This repo was created as a launching point for myself and other developers to create Next.js-tailwindcss-faundb projects.
+Unfinished, more to come.
 
 ## Use
 
@@ -14,4 +14,4 @@ To deploy your app, connect your github repo to Vercel.
 
 ## Deployed App
 
-https://starter-code-nextjs-tailwindcss-faunadb.vercel.app
+https://condivi.vercel.app
