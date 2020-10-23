@@ -46,7 +46,7 @@ export default function Nav() {
         <div className=" no-select px-2 mx-2 flex justify-center cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
           <Link href="/">
             <a className="jost self-center text-center text-xl font-bold text-gray-300 sm:text-3xl">
-              Starter Code
+              Condivi
             </a>
           </Link>
         </div>

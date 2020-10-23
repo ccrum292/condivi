@@ -1,3 +1,18 @@
+/* I'm basing this applications color scheme on the discotheque slack theme */
+/* 
+Darkest Brown Background: #461412
+Medium Brown Background: #6A1B1B
+Lightest Brown/ Orange Background: #D94422
+
+Darkest Text Color: rgb(203,147,86), also used for scroll bar
+Medium Text Color: rgb(255, 212, 118)
+Lightest Text Color: rgb(253, 246, 227)
+
+Dark Theme Background: #9a9c9e
+
+*/
+
+
 @tailwind base;
 @tailwind components;
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
