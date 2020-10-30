@@ -1,20 +1,24 @@
 import NavItem from "./NavItem";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UserAndNavContext from "../context/userAndNavContext";
 import LgPillButton from "./LgPillButton";
 import { useRouter } from "next/router";
 import handleLogoutAPI from "../lib/ts/handleLogout";
+import FullViewProcessing from "../components/FullViewProcessing";
 
 export default function SideNavMenu(props) {
   const { authToken, setAuthToken, setUser } = useContext(UserAndNavContext);
   const router = useRouter();
+  const [processingLogoutSidNav, setProcessingLogoutSideNav] = useState(false);
 
   const handleOnClick = () => {
     console.log("hit");
   };
 
   const handleLogout = async () => {
+    setProcessingLogoutSideNav(!processingLogoutSidNav);
     const data = await handleLogoutAPI()
+    setProcessingLogoutSideNav(false);
     if (!data) return
     setAuthToken(null);
     setUser(null);
@@ -23,6 +27,7 @@ export default function SideNavMenu(props) {
 
   return (
     <div className="h-full hidden flex flex-col bg-cG-999 pt-1 pb-12 border-r border-cO-999 border-opacity-50 sm:py-2 lg:block">
+      {processingLogoutSidNav ? <FullViewProcessing /> : null}
       <NavItem
         handleOnClick={handleOnClick}
         href="/"

@@ -5,7 +5,6 @@ import { useContext, useEffect, useRef } from "react";
 import UserAndNavContext from "../context/userAndNavContext";
 import { GetStaticProps } from "next";
 import { server } from "../lib/config";
-import ZenModeToggler from "../components/ZenModeToggler";
 
 export const getStaticProps: GetStaticProps = async () => {
 
@@ -44,7 +43,6 @@ export default function IndexPage({ data }) {
           </div>
         )}
         <div ref={indexPageRef} className="text-white bg-cG-999">
-          <ZenModeToggler focusRef={indexPageRef} />
         </div>
       </div>
     </div>

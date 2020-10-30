@@ -4,6 +4,7 @@ import SideNavMenu from "../../components/SideNavMenu";
 import { useContext, useState, useEffect } from "react";
 import UserAndNavContext from "../../context/userAndNavContext";
 import { useRouter } from "next/router";
+import FullViewProcessing from "../../components/FullViewProcessing";
 
 const LoginOrRegister = () => {
   const { navOpen, setNavOpen, authToken } = useContext(UserAndNavContext);
@@ -11,7 +12,7 @@ const LoginOrRegister = () => {
   const router = useRouter()
   useEffect(() => {
     if (authToken) setPageDisplayed(true);
-    else router.push("/loginOrRegister")
+    else router.push("/")
   }, [])
 
 
@@ -32,7 +33,8 @@ const LoginOrRegister = () => {
         {pageDisplayed ?
           <div>
             This is a Secret Page with a twist
-          </div> : null
+          </div> :
+          <FullViewProcessing />
         }
 
       </div>

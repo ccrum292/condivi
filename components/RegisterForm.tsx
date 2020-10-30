@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { useState } from "react";
 import { server } from "../lib/config";
+import FullViewProcessing from "./FullViewProcessing";
 
 interface NewUserObject {
   email: string,
@@ -13,6 +14,8 @@ export default function RegisterForm(props) {
   const [password, setPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
   const [error, setError] = useState("");
+  const [processingRegistration, setProcessingRegistration] = useState(false);
+
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -24,7 +27,7 @@ export default function RegisterForm(props) {
       email: email,
       password: password
     }
-
+    setProcessingRegistration(!processingRegistration);
     const res = await fetch(`${server}/api/users/register`, {
       method: 'POST',
       headers: {
@@ -34,12 +37,15 @@ export default function RegisterForm(props) {
     })
 
     const data = await res.json();
+    setProcessingRegistration(!processingRegistration);
+    if (data.error) return setError("An Error occurred when creating your account, please try again.")
     props.setSuccessfulRegistration(true);
     props.setIndexOfActiveTab(0);
   }
 
   return (
     <div className="w-full">
+      { processingRegistration ? <FullViewProcessing /> : null}
       <p className="mx-2 font-bold text-red-700">{error}</p>
       <form onSubmit={e => handleSubmit(e)} className="w-full flex flex-col justify-center items-center">
         <div className="mb-4">

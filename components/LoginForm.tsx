@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import TokenStore from "../lib/ts/TokenStore";
 import signInUserWithAuthToken from "../lib/ts/signInUserWithAuthToken";
 import UserAndNavContext from "../context/userAndNavContext";
+import FullViewProcessing from "./FullViewProcessing";
 
 interface UserLoginBody {
   email: string,
@@ -16,6 +17,7 @@ export default function LoginForm(props) {
   const router = useRouter();
   const { setUser, setAuthToken } = useContext(UserAndNavContext);
   const [loginError, setLoginError] = useState("");
+  const [processingLogin, setProcessingLogin] = useState(false);
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -27,7 +29,7 @@ export default function LoginForm(props) {
       email: email,
       password: password
     }
-
+    setProcessingLogin(!processingLogin);
     const res = await fetch(`${server}/api/users/login`, {
       method: 'POST',
       headers: {
@@ -37,6 +39,7 @@ export default function LoginForm(props) {
     })
 
     const data = await res.json();
+    setProcessingLogin(!processingLogin);
     if (data.error) {
       setLoginError("User authentication failed, please try a new password or email, thank you.");
       return
@@ -52,6 +55,7 @@ export default function LoginForm(props) {
   return (
     <div className="w-full">
       { props.successfulRegistration ? <p className="mx-2 font-bold text-red-700">Registration Successful, Please Log in. </p> : null}
+      { processingLogin ? <FullViewProcessing /> : null}
       <p className="mx-2 font-bold text-red-700">{loginError}</p>
       <form onSubmit={e => handleSubmit(e)} className=" w-full flex flex-col justify-center items-center">
         <div className="mb-4">

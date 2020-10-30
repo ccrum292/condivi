@@ -8,19 +8,22 @@ import Gravatar from "react-gravatar";
 import LgPillButton from "../components/LgPillButton";
 import { useRouter } from "next/router";
 import handleLogoutAPI from "../lib/ts/handleLogout";
-
+import FullViewProcessing from "../components/FullViewProcessing";
 
 export default function Nav() {
   const { navOpen, setNavOpen, authToken, setAuthToken, user, setUser } = useContext(UserAndNavContext);
   const [userDropdownDiv, setUserDropdownDiv] = useState(false);
   const router = useRouter();
+  const [processingLogout, setProcessingLogout] = useState(false);
 
   const handleOnClick = () => {
     setNavOpen(!navOpen);
   };
 
   const handleLogout = async () => {
+    setProcessingLogout(!processingLogout);
     const data = await handleLogoutAPI()
+    setProcessingLogout(false);
     if (!data) return
     setAuthToken(null);
     setUser(null);
@@ -30,6 +33,7 @@ export default function Nav() {
 
   return (
     <>
+      {processingLogout ? <FullViewProcessing /> : null}
       <div className="flex items-center justify-between bg-cB-800">
         <div
           className="px-2 my-1 sm:my-0 cursor-pointer sm:transition duration-300 ease-in-out sm:transform hover:scale-125"
