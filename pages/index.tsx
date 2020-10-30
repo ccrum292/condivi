@@ -1,15 +1,17 @@
 import Nav from '../components/Nav'
 import Head from 'next/head'
 import SideNavMenu from "../components/SideNavMenu"
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import UserAndNavContext from "../context/userAndNavContext";
 import { GetStaticProps } from "next";
 import { server } from "../lib/config";
+import ZenModeToggler from "../components/ZenModeToggler";
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const res = await fetch(`${server}/api/scrape/instagram`)
-  const data = await res.json()
+  // const res = await fetch(`${server}/api/scrape/instagram`)
+  // const data = await res.json()
+  let data = { Hello: "Hello World" }
 
   return {
     props: {
@@ -22,9 +24,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function IndexPage({ data }) {
   const { navOpen, setNavOpen, user, setUser, authToken, setAuthToken } = useContext(UserAndNavContext);
+  const indexPageRef = useRef(null);
 
   return (
-    <div className="flex flex-col min-h-screen bg-cG-999">
+    <div ref={indexPageRef} className="flex flex-col min-h-screen bg-cG-999">
       <Head>
         {/* <link rel="icon" href="/favicon.ico" /> */}
         <meta
@@ -40,7 +43,9 @@ export default function IndexPage({ data }) {
             <SideNavMenu />
           </div>
         )}
-        <div className="text-white">{JSON.stringify(data)}</div>
+        <div className="text-white">
+          <ZenModeToggler focusRef={indexPageRef} />
+        </div>
       </div>
     </div>
   );

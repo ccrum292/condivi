@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [navOpen, setNavOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [authToken, setAuthToken] = useState(null);
+  const [isZenMode, setIsZenMode] = useState(false);
 
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     setUserOnPageLoad();
   }, [])
   
-  const value = useMemo(() => ({ navOpen, setNavOpen, user, setUser, authToken, setAuthToken }), [navOpen, setNavOpen, user, setUser, authToken, setAuthToken]);
+  const value = useMemo(() => ({ navOpen, setNavOpen, user, setUser, authToken, setAuthToken, isZenMode, setIsZenMode }), [navOpen, setNavOpen, user, setUser, authToken, setAuthToken, isZenMode, setIsZenMode]);
   return (
     (
       <UserAndNavContext.Provider value={value}>
