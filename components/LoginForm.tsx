@@ -15,6 +15,7 @@ export default function LoginForm(props) {
   const [password, setPassword] = useState("");
   const router = useRouter();
   const { setUser, setAuthToken } = useContext(UserAndNavContext);
+  const [loginError, setLoginError] = useState("");
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -36,6 +37,10 @@ export default function LoginForm(props) {
     })
 
     const data = await res.json();
+    if (data.error) {
+      setLoginError("User authentication failed, please try a new password or email, thank you.");
+      return
+    }
     TokenStore.setToken(data.secret);
     const userData = await signInUserWithAuthToken()
     setUser(userData);
@@ -47,6 +52,7 @@ export default function LoginForm(props) {
   return (
     <div className="w-full">
       { props.successfulRegistration ? <p className="mx-2 font-bold text-red-700">Registration Successful, Please Log in. </p> : null}
+      <p className="mx-2 font-bold text-red-700">{loginError}</p>
       <form onSubmit={e => handleSubmit(e)} className=" w-full flex flex-col justify-center items-center">
         <div className="mb-4">
           <label className="jost block text-white text-sm mx-2 pt-2 mb-2" htmlFor="email">Email</label>

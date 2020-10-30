@@ -27,7 +27,7 @@ export default function IndexPage({ data }) {
   const indexPageRef = useRef(null);
 
   return (
-    <div ref={indexPageRef} className="flex flex-col min-h-screen bg-cG-999">
+    <div className="flex flex-col min-h-screen bg-cG-999">
       <Head>
         {/* <link rel="icon" href="/favicon.ico" /> */}
         <meta
@@ -43,7 +43,7 @@ export default function IndexPage({ data }) {
             <SideNavMenu />
           </div>
         )}
-        <div className="text-white">
+        <div ref={indexPageRef} className="text-white bg-cG-999">
           <ZenModeToggler focusRef={indexPageRef} />
         </div>
       </div>

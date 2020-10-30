@@ -6,10 +6,7 @@ export default function ZenModeToggler({ focusRef }) {
   const { isZenMode, setIsZenMode } = useContext(userAndNavContext);
 
   const exitHandler = () => {
-    if (document.fullscreenElement || document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement === null) {
-      console.log("enter")
-    } else {
-      console.log("exit")
+    if (document.fullscreenElement === null) {
       setIsZenMode(false);
       toggleRef.current.checked = false;
     }

@@ -16,7 +16,7 @@ export default function TabDiv() {
   return (
     <div className="flex-grow flex flex-col items-center justify-center lg:w-8/12 lg:mx-auto">
 
-      <div className="shadowClass rounded-lg">
+      <div className="shadowClass rounded-lg max-w-xs">
         <ul className="flex">
           <li value={0} onClick={e => handleTabClick(e)} className={indexOfActiveTab === 0 ? tabActive : tabInactive}>
             Login
