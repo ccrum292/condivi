@@ -39,7 +39,7 @@ export default function LoginForm(props) {
     })
 
     const data = await res.json();
-    setProcessingLogin(!processingLogin);
+    setProcessingLogin(false);
     if (data.error) {
       setLoginError("User authentication failed, please try a new password or email, thank you.");
       return

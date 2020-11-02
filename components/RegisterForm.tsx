@@ -27,7 +27,7 @@ export default function RegisterForm(props) {
       email: email,
       password: password
     }
-    setProcessingRegistration(!processingRegistration);
+    setProcessingRegistration(false);
     const res = await fetch(`${server}/api/users/register`, {
       method: 'POST',
       headers: {
