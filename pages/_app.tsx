@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState(null);
   const [authToken, setAuthToken] = useState(null);
   const [isZenMode, setIsZenMode] = useState(false);
+  const [instagramAccessToken, setInstagramAccessToken] = useState(null);
 
 
   useEffect(() => {
@@ -25,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     setUserOnPageLoad();
   }, [])
   
-  const value = useMemo(() => ({ navOpen, setNavOpen, user, setUser, authToken, setAuthToken, isZenMode, setIsZenMode }), [navOpen, setNavOpen, user, setUser, authToken, setAuthToken, isZenMode, setIsZenMode]);
+  const value = useMemo(() => ({ navOpen, setNavOpen, user, setUser, authToken, setAuthToken, isZenMode, setIsZenMode, instagramAccessToken, setInstagramAccessToken }), [navOpen, setNavOpen, user, setUser, authToken, setAuthToken, isZenMode, setIsZenMode, instagramAccessToken, setInstagramAccessToken]);
   return (
     (
       <UserAndNavContext.Provider value={value}>

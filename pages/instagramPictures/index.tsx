@@ -9,7 +9,7 @@ import GetInstagramPictures from "../../components/GetInstagramPictures";
 import { server } from "../../lib/config";
 
 
-const UserPage = () => {
+const InstagramPictures = () => {
   const { navOpen, setNavOpen, authToken } = useContext(UserAndNavContext);
   const [pageDisplayed, setPageDisplayed] = useState(false);
   const router = useRouter()
@@ -17,6 +17,10 @@ const UserPage = () => {
     if (authToken) setPageDisplayed(true);
     else router.push("/")
   }, [])
+
+  const handleGetInstagramPicturesClick = () => {
+    window.location.href = `https://api.instagram.com/oauth/authorize?client_id=384846652652288&redirect_uri=https://localhost:3000/user/instagram/auth&scope=user_profile,user_media&response_type=code`
+  }
 
 
   return (
@@ -38,6 +42,7 @@ const UserPage = () => {
             <div>
 
             </div>
+            <GetInstagramPictures handleOnClick={handleGetInstagramPicturesClick} />
           </> :
           <FullViewProcessing />
         }
@@ -47,4 +52,4 @@ const UserPage = () => {
   );
 }
 
-export default UserPage;
+export default InstagramPictures;

@@ -11,19 +11,34 @@ import TokenStore from "../../../../lib/ts/TokenStore";
 
 
 const InstagramAuth = () => {
-  const { navOpen, setNavOpen, authToken } = useContext(UserAndNavContext);
+  const { navOpen, setNavOpen, authToken, instagramAccessToken, setInstagramAccessToken } = useContext(UserAndNavContext);
   const [pageDisplayed, setPageDisplayed] = useState(false);
   const router = useRouter()
 
-  const grabInstagramAuthToken = () => {
-    const instagramAuthToken = window.location.href.split("=")[1].split("#")[0]
-    TokenStore.setToken("instagramToken", instagramAuthToken)
+  const createAndRetrieveInstagramAuthToken = async () => {
+    const instagramCode = window.location.href.split("=")[1].split("#")[0];
+
+    const res = await fetch(`${server}/api/users/instagram/auth`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': "application/json"
+      },
+      body: JSON.stringify({ instagramCode: instagramCode })
+    });
+
+    const data = await res.json();
+
+    TokenStore.setToken("instagramAccessToken", data.access_token);
+    setInstagramAccessToken(data.access_token)
+
+    return data;
   }
 
-
   useEffect(() => {
-    grabInstagramAuthToken()
-    // else router.push("/")
+    createAndRetrieveInstagramAuthToken().then(data => {
+      console.log(data);
+      router.push("/instagramPictures")
+    })
   }, [])
 
 

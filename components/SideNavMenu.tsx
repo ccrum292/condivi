@@ -36,11 +36,17 @@ export default function SideNavMenu(props) {
         classNameTailwind="mx-4 mt-2 mb-2"
       />
       {authToken ?
-        <> 
+        <>
           <NavItem
             href="/user"
             id={2}
             text="User"
+            classNameTailwind="mx-4 mt-2 mb-2"
+          />
+          <NavItem
+            href="/instagramPictures"
+            id={3}
+            text="Instagram Pictures"
             classNameTailwind="mx-4 mt-2 mb-2"
           />
           <LgPillButton

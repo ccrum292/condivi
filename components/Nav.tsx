@@ -73,10 +73,10 @@ export default function Nav() {
           <div className="no-select flex justify-center sm:px-2 mx-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105">
             <Link href="/loginOrRegister">
               <a className="jost self-center text-center font-bold sm:text-xl text-cO-999">
-              Login or Register
+                Login or Register
             </a>
-          </Link>
-        </div>
+            </Link>
+          </div>
         }
       </div>
       {navOpen ? (
@@ -97,6 +97,13 @@ export default function Nav() {
                 text="User"
                 classNameTailwind="px-16 mt-2 mb-2"
               />
+              <NavItem
+                handleOnClick={handleOnClick}
+                href="/instagramPictures"
+                id={3}
+                text="Instagram Pictures"
+                classNameTailwind="px-16 mt-2 mb-2"
+              />
               <LgPillButton
                 handleOnClick={handleLogout}
                 id={1}
@@ -110,7 +117,7 @@ export default function Nav() {
               id={1}
               text="Login or Register"
               classNameTailwind="px-16 mt-2 mb-2"
-            /> 
+            />
 
           }
         </div>
