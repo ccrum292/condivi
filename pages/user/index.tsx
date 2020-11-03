@@ -5,6 +5,9 @@ import { useContext, useState, useEffect } from "react";
 import UserAndNavContext from "../../context/userAndNavContext";
 import { useRouter } from "next/router";
 import FullViewProcessing from "../../components/FullViewProcessing";
+import GetInstagramPictures from "../../components/GetInstagramPictures";
+import { server } from "../../lib/config";
+
 
 const LoginOrRegister = () => {
   const { navOpen, setNavOpen, authToken } = useContext(UserAndNavContext);
@@ -14,6 +17,10 @@ const LoginOrRegister = () => {
     if (authToken) setPageDisplayed(true);
     else router.push("/")
   }, [])
+
+  const handleGetInstagramPicturesClick = () => {
+    window.location.href = `https://api.instagram.com/oauth/authorize?client_id=384846652652288&redirect_uri=https://localhost:3000/user/instagram/auth&scope=user_profile,user_media&response_type=code`
+  }
 
 
   return (
@@ -31,9 +38,12 @@ const LoginOrRegister = () => {
           </div>
         )}
         {pageDisplayed ?
-          <div>
-            This is a Secret Page with a twist
-          </div> :
+          <>
+            <div>
+
+            </div>
+            <GetInstagramPictures handleOnClick={handleGetInstagramPicturesClick} />
+          </> :
           <FullViewProcessing />
         }
 

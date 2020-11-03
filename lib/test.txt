@@ -9,3 +9,8 @@ https://scontent-iad3-1.cdninstagram.com/v/t51.2885-15/e35/c157.0.405.405a/s320x
 #response 
 
 https://scontent-atl3-1.cdninstagram.com/v/t51.2885-15/e35/c157.0.405.405a/s320x320/119993655_1038567093248118_8991808198671505200_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com%5Cu0026_nc_cat%3D106%5Cu0026_nc_ohc%3DEehGA3zzJUcAX8oHhFF%5Cu0026tp%3D16%5Cu0026oh%3De29ea7b490891abe753c84582400b715%5Cu0026oe%3D5F95DCCA
+
+
+https://api.instagram.com/oauth/authorize?client_id=384846652652288&redirect_uri=https://condivi.vercel.app/api/users/instagram/auth&scope=user_profile,user_media&response_type=code
+
+https://condivi.vercel.app/api/users/instagram/auth?code=AQA0iW-3hc5hdov07msx7ZjZC51jlmMy7r4gl0vZ8lO0kJVBK-7kvM_1QJTedvuPKrYGRkgr4fUjeorUO3K-5Svmqq6jF5a2ryMNAD_BAgH63opYNdqVb-1GLrbPo1BsCrGN3eoHQPEyB5H3RTd4BcINpntWbNeCE9qJfh0wnDA9u4x8tI-4hRmYthZZzyWT8i5FZ-4e4KDhe19wKXOx1p3Z9DJInqBlNxuUOysRcYKA4w#_

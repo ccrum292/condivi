@@ -1,14 +1,14 @@
 class TokenStore {
-  static setToken(token) {
-    localStorage.setItem("token", token);
+  static setToken(tokenName, token) {
+    localStorage.setItem(tokenName, token);
   }
 
-  static getToken() {
-    return localStorage.getItem("token");
+  static getToken(tokenName) {
+    return localStorage.getItem(tokenName);
   }
 
-  static clearToken() {
-    localStorage.removeItem("token");
+  static clearToken(tokenName) {
+    localStorage.removeItem(tokenName);
   }
 }
 

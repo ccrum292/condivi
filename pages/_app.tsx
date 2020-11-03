@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       const userData = await signInUserWithAuthToken()
       if (!userData) return
       setUser(userData)
-      setAuthToken(TokenStore.getToken())
+      setAuthToken(TokenStore.getToken("token"))
     }
 
     setUserOnPageLoad();

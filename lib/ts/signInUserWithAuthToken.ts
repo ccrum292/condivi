@@ -3,7 +3,7 @@ import { server } from "../config";
 
 
 const signInUserWithAuthToken = async () => {
-  const token = TokenStore.getToken();
+  const token = TokenStore.getToken("token");
   if (!token) return
   const res = await fetch(`${server}/api/users/login/auth`, {
     method: 'GET',

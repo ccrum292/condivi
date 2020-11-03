@@ -44,7 +44,7 @@ export default function LoginForm(props) {
       setLoginError("User authentication failed, please try a new password or email, thank you.");
       return
     }
-    TokenStore.setToken(data.secret);
+    TokenStore.setToken("token", data.secret);
     const userData = await signInUserWithAuthToken()
     setUser(userData);
     setAuthToken(data.secret);
