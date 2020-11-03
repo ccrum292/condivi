@@ -7,14 +7,32 @@ import { useRouter } from "next/router";
 import FullViewProcessing from "../../components/FullViewProcessing";
 import GetInstagramPictures from "../../components/GetInstagramPictures";
 import { server } from "../../lib/config";
+import FibonacciMediaViewer from "../../components/FibonacciMediaViewer";
 
 
 const InstagramPictures = () => {
-  const { navOpen, setNavOpen, authToken } = useContext(UserAndNavContext);
+  const { navOpen, setNavOpen, authToken, instagramAccessToken } = useContext(UserAndNavContext);
   const [pageDisplayed, setPageDisplayed] = useState(false);
+  const [arrayOfInstagramMedia, setArrayOfInstagramMedia] = useState(null);
   const router = useRouter()
+
+  const getUserMedia = async () => {
+
+    const res = await fetch(`${server}/api/users/instagram/media/${instagramAccessToken}`);
+
+    const data = await res.json();
+
+    console.log(data);
+
+    setArrayOfInstagramMedia(data.data);
+
+  }
+
   useEffect(() => {
-    if (authToken) setPageDisplayed(true);
+    if (authToken) {
+      setPageDisplayed(true);
+      if (instagramAccessToken && !arrayOfInstagramMedia) getUserMedia()
+    }
     else router.push("/")
   }, [])
 
@@ -34,15 +52,13 @@ const InstagramPictures = () => {
       <div className="flex-grow flex">
         {navOpen ? null : (
           <div className="hidden lg:block w-48">
-            <SideNavMenu />
+            <SideNavMenu activeClassCss={{ tabName: "instagramPictures", tailwindCss: "rounded-full bg-cB-800" }} />
           </div>
         )}
         {pageDisplayed ?
           <>
-            <div>
-
-            </div>
-            <GetInstagramPictures handleOnClick={handleGetInstagramPicturesClick} />
+            {arrayOfInstagramMedia ? <FibonacciMediaViewer arrayOfInstagramMedia={arrayOfInstagramMedia} /> : null}
+            {instagramAccessToken ? null : <GetInstagramPictures handleOnClick={handleGetInstagramPicturesClick} />}
           </> :
           <FullViewProcessing />
         }

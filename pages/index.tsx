@@ -39,7 +39,7 @@ export default function IndexPage({ data }) {
       <div className="flex-grow lg:flex">
         {navOpen ? null : (
           <div className="hidden lg:block w-48">
-            <SideNavMenu />
+            <SideNavMenu activeClassCss={{ tabName: "home", tailwindCss: "rounded-full bg-cB-800" }} />
           </div>
         )}
         <div ref={indexPageRef} className="text-white bg-cG-999">

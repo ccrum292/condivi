@@ -30,7 +30,7 @@ const UserPage = () => {
       <div className="flex-grow flex">
         {navOpen ? null : (
           <div className="hidden lg:block w-48">
-            <SideNavMenu />
+            <SideNavMenu activeClassCss={{ tabName: "user", tailwindCss: "rounded-full bg-cB-800" }} />
           </div>
         )}
         {pageDisplayed ?

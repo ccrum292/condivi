@@ -14,7 +14,7 @@ const handleLogoutAPI = async () => {
   })
   const data = await res.json();
   TokenStore.clearToken("token");
-  TokenStore.clearToken("instagramToken")
+  TokenStore.clearToken("instagramAccessToken")
   return data
 }
 
