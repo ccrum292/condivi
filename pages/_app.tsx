@@ -21,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       if (!userData) return
       setUser(userData)
       setAuthToken(TokenStore.getToken("token"))
+      setInstagramAccessToken(TokenStore.getToken("instagramAccessToken"))
     }
 
     setUserOnPageLoad();

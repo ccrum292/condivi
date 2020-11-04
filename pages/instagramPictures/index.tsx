@@ -22,8 +22,6 @@ const InstagramPictures = () => {
 
     const data = await res.json();
 
-    console.log(data);
-
     setArrayOfInstagramMedia(data.data);
 
   }

@@ -104,6 +104,15 @@ input:checked + .slider:before {
 /* End of ZenMode Toggler */
 
 
+/* start of FibonacciMediaViewer Css */
+
+/* .mainFibDiv {
+  width: 61.53846153846154%;
+} */
+
+/* end of FibonacciMediaViewer Css */
+
+
 .btn-blue {
   @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
 }

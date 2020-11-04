@@ -19,6 +19,9 @@ module.exports = {
       opacity:{
         '90':'.9'
       },
+      gridTemplateColumns: {
+        '13': 'repeat(13, minmax(0, 1fr))'
+      },
       colors: {
         cB: {
           600: '#D94422',
